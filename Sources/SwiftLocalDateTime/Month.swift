@@ -33,3 +33,12 @@ public extension Month {
         }
     }
 }
+
+extension Month {
+    public static var current: Month {
+        let calendar = Calendar(identifier: .gregorian)
+        let month = Int(calendar.component(.month, from: Date()))
+
+        return Month(rawValue: month)!
+    }
+}

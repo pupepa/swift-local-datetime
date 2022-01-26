@@ -6,4 +6,8 @@ class MonthTests: XCTestCase {
         XCTAssertEqual(Month.january, Month.january)
         XCTAssertGreaterThan(Month.july, Month.april)
     }
+
+    func testCurrent() throws {
+        XCTAssertTrue(Month.allCases.contains(Month.current))
+    }
 }
