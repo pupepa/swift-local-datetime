@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Month: Int {
+public enum Month: Int, CaseIterable {
     case january = 1
     case february
     case march
@@ -13,6 +13,12 @@ public enum Month: Int {
     case october
     case november
     case december
+}
+
+extension Month: Comparable {
+    public static func < (lhs: Month, rhs: Month) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
 }
 
 public extension Month {
