@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Week: Int {
+public enum Week: Int, CaseIterable {
     case sunday = 1
     case monday
     case tuesday
@@ -8,6 +8,12 @@ public enum Week: Int {
     case thursday
     case friday
     case saturday
+}
+
+extension Week: Comparable {
+    public static func < (lhs: Week, rhs: Week) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
 }
 
 extension Week {
