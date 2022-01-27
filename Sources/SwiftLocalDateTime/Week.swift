@@ -33,3 +33,19 @@ extension Week {
         return Self.weekend.contains(self)
     }
 }
+
+extension Week {
+    public static var today: Week {
+        let calendar: Calendar = {
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = .current
+            calendar.locale = .current
+
+            return calendar
+        }()
+
+        let weekday = calendar.component(.weekday, from: Date())
+
+        return Week(rawValue: weekday)!
+    }
+}
