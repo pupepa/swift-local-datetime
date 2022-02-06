@@ -139,7 +139,7 @@ class LocalTimeTests: XCTestCase {
     func testDate() {
         let time = LocalTime(hour: 14, minute: 25, second: 36)!
 
-        XCTAssertEqual(time.date().timeIntervalSince1970, 51936)
+        XCTAssertEqual(time.date().timeIntervalSince1970, 19536)
     }
 
     func testMinutedOfDay() {

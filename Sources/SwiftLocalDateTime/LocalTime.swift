@@ -22,7 +22,7 @@ public class LocalTime {
         self.init(hour: minutesOfDay / 60, minute: minutesOfDay % 60)
    }
 
-    public required init(date: Date, timeZone: TimeZone = TimeZone.current) {
+    public required init(date: Date, timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) {
         let dateFormatter = Self.dateFormatter
         dateFormatter.timeZone = timeZone
 
@@ -80,8 +80,9 @@ public class LocalTime {
         return "\(second < 10 ? "0" : "")\(second)"
     }
 
-    public func date(with baseDate: Date = .init(timeIntervalSince1970: 0)) -> Date {
-        return baseDate.addingTimeInterval(TimeInterval(secondOfDay))
+    public func date(with baseDate: Date = .init(timeIntervalSince1970: 0), timeZone: TimeZone = TimeZone.current) -> Date {
+        let addedTimeInterval = TimeInterval(secondOfDay) - TimeInterval(timeZone.secondsFromGMT())
+        return baseDate.addingTimeInterval(addedTimeInterval)
     }
 
     public var minutesOfDay: Int {
