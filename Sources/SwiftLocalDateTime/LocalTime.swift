@@ -22,7 +22,7 @@ public class LocalTime {
         self.init(hour: minutesOfDay / 60, minute: minutesOfDay % 60)
    }
 
-    public required init(date: Date, timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) {
+    public required init(date: Date, timeZone: TimeZone = .current) {
         let dateFormatter = Self.dateFormatter
         dateFormatter.timeZone = timeZone
 

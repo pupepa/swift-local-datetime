@@ -59,7 +59,10 @@ class LocalTimeTests: XCTestCase {
     }
 
     func testInitializeLocalTime() {
-        XCTAssertNotNil(LocalTime(date: Date()))
+        // 2022-01-01 01:02:03+00:00
+        let date = Date(timeIntervalSince1970: 1640998923)
+        let localTime = LocalTime(date: date, timeZone: TimeZone(secondsFromGMT: 0)!)
+        XCTAssertEqual(localTime, LocalTime(hour: 1, minute: 2, second: 3))
     }
 
     func testInitializeWithHHMMSS() {
