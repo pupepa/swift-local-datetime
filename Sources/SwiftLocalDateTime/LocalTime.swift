@@ -38,7 +38,7 @@ public class LocalTime {
 
     private static let dateFormatter = DateFormatter()
 
-    public convenience init?(timeString: String) {
+    public convenience init?(timeString: String, timeZone: TimeZone = .current) {
         let range = NSRange(location: 0, length: timeString.count)
 
         if let result = try! NSRegularExpression(pattern: "(\\d{1,2}):{0,1}(\\d{2}):{0,1}(\\d{2})").firstMatch(in: timeString, range: range) {
@@ -55,7 +55,7 @@ public class LocalTime {
         } else if let result = try! NSRegularExpression(pattern: "\\d{1,2}").firstMatch(in: timeString, range: range) {
             guard let minute = Int((timeString as NSString).substring(with: result.range(at: 0))) else { return nil }
 
-            let time = LocalTime(date: .init()).time(byAdding: .minute, value: minute)
+            let time = LocalTime(date: .init(), timeZone: timeZone).time(byAdding: .minute, value: minute)
 
             self.init(hour: time.hour, minute: time.minute)
         } else {
