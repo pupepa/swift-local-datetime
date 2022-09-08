@@ -214,10 +214,8 @@ class LocalTimeTests: XCTestCase {
     }
 
     func testComparable() {
-        let time1 = LocalTime(hour: 1, minute: 2, second: 3)!
-        let time2 = LocalTime(timeString: "03:04:05")!
-
-        XCTAssertLessThan(time1, time2)
+        XCTAssertLessThan(LocalTime(hour: 1, minute: 2, second: 3)!, LocalTime(timeString: "03:04:05")!)
+        XCTAssertLessThan(LocalTime(hour: 1, minute: 2, second: 10)!, LocalTime(hour: 1, minute: 2, second: 20)!)
     }
 
     func testHashable() {
