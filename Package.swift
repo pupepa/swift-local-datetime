@@ -7,7 +7,7 @@ let package = Package(
     name: "SwiftLocalDateTime",
     platforms: [
         .iOS(.v13),
-        .watchOS(.v6)
+        .watchOS(.v8)
     ],
     products: [
         .library(
