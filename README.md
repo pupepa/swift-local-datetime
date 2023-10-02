@@ -14,7 +14,7 @@ Add the following line to your `Package.swift`:
 
 ```
 dependencies: [
-    .package(url: "https://github.com/gonzoooooo/SwiftLocalDate.git")
+    .package(url: "https://github.com/pupepa/SwiftLocalDate.git")
 ]
 ```
 
