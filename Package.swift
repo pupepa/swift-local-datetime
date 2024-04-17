@@ -4,22 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftLocalDateTime",
-    platforms: [
-        .iOS(.v13),
-        .watchOS(.v8)
-    ],
-    products: [
-        .library(
-            name: "SwiftLocalDateTime",
-            targets: ["SwiftLocalDateTime"]),
-    ],
-    targets: [
-        .target(
-            name: "SwiftLocalDateTime",
-            dependencies: []),
-        .testTarget(
-            name: "SwiftLocalDateTimeTests",
-            dependencies: ["SwiftLocalDateTime"]),
-    ]
+  name: "SwiftLocalDateTime",
+  platforms: [
+    .iOS(.v13),
+    .watchOS(.v8),
+  ],
+  products: [
+    .library(
+      name: "SwiftLocalDateTime",
+      targets: ["SwiftLocalDateTime"]
+    )
+  ],
+  targets: [
+    .target(
+      name: "SwiftLocalDateTime",
+      dependencies: []
+    ),
+    .testTarget(
+      name: "SwiftLocalDateTimeTests",
+      dependencies: ["SwiftLocalDateTime"]
+    ),
+  ]
 )
