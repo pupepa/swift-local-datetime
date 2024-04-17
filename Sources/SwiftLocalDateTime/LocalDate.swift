@@ -120,7 +120,12 @@ extension LocalDate {
 
 extension LocalDate {
   public static func monthInterval(from fromDate: LocalDate, to toDate: LocalDate) -> Int {
-    Self.calendar.dateComponents([.month], from: fromDate.date(), to: toDate.date()).month ?? 0
+    let fromDateYear = fromDate.year
+    let fromDateMonth = fromDate.month
+    let toDateYear = toDate.year
+    let toDateMonth = toDate.month
+
+    return (toDateYear - fromDateYear) * 12 + toDateMonth - fromDateMonth
   }
 
   public static func dayInterval(from fromDate: LocalDate, to toDate: LocalDate) -> Int {

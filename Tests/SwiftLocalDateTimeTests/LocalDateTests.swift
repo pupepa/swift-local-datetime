@@ -179,6 +179,12 @@ final class LocalDateTests: XCTestCase {
     XCTAssertEqual(LocalDate.monthInterval(from: fromDate, to: toDate), 4)
   }
 
+  func testMonthInterval2() {
+    let fromDate = LocalDate(year: 2021, month: 4, day: 20)!
+    let toDate = LocalDate(year: 2021, month: 8, day: 1)!
+    XCTAssertEqual(LocalDate.monthInterval(from: fromDate, to: toDate), 4)
+  }
+
   func testMonthIntervalCrossYear() {
     let fromDate = LocalDate(year: 2021, month: 1, day: 1)!
     let toDate = LocalDate(year: 2022, month: 2, day: 28)!
