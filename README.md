@@ -4,7 +4,7 @@ Inspired by `java.time.LocalDateTime`. (also `java.time.LocalDate` and `java.tim
 
 ## Requirements
 
-iOS 13+ / watchOS 6+
+iOS 16+ / watchOS 6+
 
 ## Installation
 
