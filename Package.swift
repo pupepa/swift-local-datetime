@@ -18,7 +18,11 @@ let package = Package(
   targets: [
     .target(
       name: "SwiftLocalDateTime",
-      dependencies: []
+      dependencies: [],
+      swiftSettings: [
+        .swiftLanguageMode(.v5),
+        .enableUpcomingFeature("StrictConcurrency")
+      ]
     ),
     .testTarget(
       name: "SwiftLocalDateTimeTests",
