@@ -1,6 +1,6 @@
 import Foundation
 
-public final class LocalDate {
+public final class LocalDate: Sendable {
   private let y: Year
   private let m: Month
 
@@ -62,7 +62,7 @@ public final class LocalDate {
 
   fileprivate static let timeZone = TimeZone(secondsFromGMT: 0)!
 
-  fileprivate static var calendar: Calendar = {
+  fileprivate static let calendar: Calendar = {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = LocalDate.timeZone
     return calendar
