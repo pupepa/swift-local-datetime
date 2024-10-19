@@ -1,6 +1,6 @@
 import Foundation
 
-public final class LocalDateTime {
+public struct LocalDateTime: Codable, Sendable {
   public let localDate: LocalDate
   public let localTime: LocalTime
 

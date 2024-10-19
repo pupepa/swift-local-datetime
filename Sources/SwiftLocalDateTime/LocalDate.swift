@@ -1,6 +1,6 @@
 import Foundation
 
-public final class LocalDate: Sendable {
+public struct LocalDate: Codable, Sendable {
   private let y: Year
   private let m: Month
 
@@ -22,7 +22,7 @@ public final class LocalDate: Sendable {
     self.day = components.day!
   }
 
-  public convenience init?(string: String, formatter: DateFormatter) {
+  public init?(string: String, formatter: DateFormatter) {
     guard let date = formatter.date(from: string) else { return nil }
 
     let components = formatter.calendar.dateComponents([.year, .month, .day], from: date)

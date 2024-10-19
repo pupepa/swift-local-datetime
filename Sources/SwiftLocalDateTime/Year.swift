@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Year: Sendable {
+public struct Year: Codable, Sendable {
   public let year: Int
 
   public init(_ year: Int) {

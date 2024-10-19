@@ -1,11 +1,11 @@
 import Foundation
 
-public class LocalTime {
+public struct LocalTime: Codable, Sendable {
   public let hour: Int
   public let minute: Int
   public let second: Int
 
-  public required init?(hour: Int, minute: Int, second: Int = 0) {
+  public init?(hour: Int, minute: Int, second: Int = 0) {
     guard hour < 24 else { return nil }
     guard minute < 60 else { return nil }
     guard second < 60 else { return nil }
@@ -15,14 +15,14 @@ public class LocalTime {
     self.second = second
   }
 
-  public required convenience init?(minutesOfDay: Int) {
+  public init?(minutesOfDay: Int) {
     guard minutesOfDay >= 0 else { return nil }
     guard minutesOfDay < 1440 else { return nil }
 
     self.init(hour: minutesOfDay / 60, minute: minutesOfDay % 60)
   }
 
-  public required init(date: Date, timeZone: TimeZone = .current) {
+  public init(date: Date, timeZone: TimeZone = .current) {
     let dateFormatter = Self.dateFormatter
     dateFormatter.timeZone = timeZone
 
@@ -38,7 +38,7 @@ public class LocalTime {
 
   private static let dateFormatter = DateFormatter()
 
-  public convenience init?(timeString: String, timeZone: TimeZone = .current) {
+  public init?(timeString: String, timeZone: TimeZone = .current) {
     let range = NSRange(location: 0, length: timeString.count)
 
     if let result = try! NSRegularExpression(pattern: "(\\d{1,2}):{0,1}(\\d{2}):{0,1}(\\d{2})")
