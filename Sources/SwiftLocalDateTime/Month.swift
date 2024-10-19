@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Month: Int, CaseIterable, Sendable {
+public enum Month: Int, CaseIterable, Codable, Sendable {
   case january = 1
   case february
   case march
