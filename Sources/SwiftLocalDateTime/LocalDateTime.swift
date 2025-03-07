@@ -17,12 +17,12 @@ public struct LocalDateTime: Codable, Sendable {
     self.localTime = localTime
   }
 
-  public init(date: Date, timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) {
+  public init(date: Date, timeZone: TimeZone = .current) {
     self.localDate = LocalDate(date: date, timeZone: timeZone)
     self.localTime = LocalTime(date: date, timeZone: timeZone)
   }
 
-  public func date(timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) -> Date {
+  public func date(timeZone: TimeZone = .current) -> Date {
     let date = localDate.date(in: timeZone)
     return date.addingTimeInterval(TimeInterval(localTime.secondOfDay))
   }

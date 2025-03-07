@@ -14,7 +14,7 @@ public struct LocalDate: Codable, Sendable {
 
   public let day: Int
 
-  public init(date: Date, timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) {
+  public init(date: Date, timeZone: TimeZone = .current) {
     let components = Self.calendar.dateComponents(in: timeZone, from: date)
 
     self.y = Year(components.year!)
@@ -44,7 +44,7 @@ public struct LocalDate: Codable, Sendable {
     self.day = day
   }
 
-  public func date(in timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) -> Date {
+  public func date(in timeZone: TimeZone = .current) -> Date {
     let dateComponents = DateComponents(
       calendar: Self.calendar,
       timeZone: timeZone,
