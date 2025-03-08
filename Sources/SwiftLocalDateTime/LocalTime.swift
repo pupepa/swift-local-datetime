@@ -57,7 +57,7 @@ public struct LocalTime: Codable, Sendable {
   public init?(timeString: String, timeZone: TimeZone = .current) {
     let range = NSRange(location: 0, length: timeString.count)
 
-    if let result = try! NSRegularExpression(pattern: "(\\d{1,2}):{0,1}(\\d{2}):{0,1}(\\d{2})")
+    if let result = try? NSRegularExpression(pattern: "(\\d{1,2}):{0,1}(\\d{2}):{0,1}(\\d{2})")
       .firstMatch(in: timeString, range: range)
     {
       guard let hour = Int((timeString as NSString).substring(with: result.range(at: 1))), hour < 24 else { return nil }
@@ -69,7 +69,7 @@ public struct LocalTime: Codable, Sendable {
       }
 
       self.init(hour: hour, minute: minute, second: second)
-    } else if let result = try! NSRegularExpression(pattern: "(\\d{1,2}):{0,1}(\\d{2})")
+    } else if let result = try? NSRegularExpression(pattern: "(\\d{1,2}):{0,1}(\\d{2})")
       .firstMatch(in: timeString, range: range)
     {
       guard let hour = Int((timeString as NSString).substring(with: result.range(at: 1))), hour < 24 else { return nil }
@@ -78,7 +78,7 @@ public struct LocalTime: Codable, Sendable {
       }
 
       self.init(hour: hour, minute: minute)
-    } else if let result = try! NSRegularExpression(pattern: "\\d{1,2}").firstMatch(in: timeString, range: range) {
+    } else if let result = try? NSRegularExpression(pattern: "\\d{1,2}").firstMatch(in: timeString, range: range) {
       guard let minute = Int((timeString as NSString).substring(with: result.range(at: 0))) else { return nil }
 
       let time = LocalTime(date: .init(), timeZone: timeZone).time(byAdding: .minute, value: minute)
