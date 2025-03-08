@@ -1,5 +1,6 @@
 import Foundation
 
+/// `Month` represents the months of the year.
 public enum Month: Int, CaseIterable, Codable, Sendable {
   case january = 1
   case february
@@ -22,6 +23,9 @@ extension Month: Comparable {
 }
 
 public extension Month {
+  /// Returns the number of days in the specified year for the month.
+  /// - Parameter year: The year.
+  /// - Returns: The number of days in the month.
   func numberOfDays(year: Year) -> Int {
     switch self {
     case .february:
@@ -35,6 +39,7 @@ public extension Month {
 }
 
 extension Month {
+  /// Returns the current month.
   public static var current: Month {
     let calendar = Calendar(identifier: .gregorian)
     let month = Int(calendar.component(.month, from: Date()))
