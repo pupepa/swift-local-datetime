@@ -96,7 +96,7 @@ extension LocalDate {
   /// Returns the first day of the month.
   public var firstDay: Self {
     let calendar = Self.calendar
-    let components = calendar.dateComponents([.year, .month], from: self.date())
+    let components = calendar.dateComponents([.year, .month], from: self.date(in: Self.timeZone))
 
     return .init(date: calendar.date(from: components)!)
   }
@@ -104,14 +104,14 @@ extension LocalDate {
   /// Returns the last day of the month.
   public var lastDay: Self {
     let calendar = Self.calendar
-    return .init(date: calendar.date(byAdding: .init(month: 1, day: -1), to: firstDay.date())!)
+    return .init(date: calendar.date(byAdding: .init(month: 1, day: -1), to: firstDay.date(in: Self.timeZone))!)
   }
 }
 
 extension LocalDate {
   /// Returns the week.
   public var week: Week {
-    Week(rawValue: Self.calendar.component(.weekday, from: self.date()))!
+    Week(rawValue: Self.calendar.component(.weekday, from: self.date(in: Self.timeZone)))!
   }
 }
 
@@ -139,10 +139,10 @@ extension LocalDate {
   /// - Parameter week: The week.
   /// - Returns: The last day of the specified week.
   public func lastDay(of week: Week) -> LocalDate {
-    let weekOfLastDate = Self.calendar.component(.weekday, from: self.lastDay.date())
+    let weekOfLastDate = Self.calendar.component(.weekday, from: self.lastDay.date(in: Self.timeZone))
     let dayDifference =
       (weekOfLastDate - week.rawValue) < 0 ? (weekOfLastDate + 7) - week.rawValue : weekOfLastDate - week.rawValue
-    let lastDayOfWeek = Self.calendar.date(byAdding: .day, value: -dayDifference, to: self.lastDay.date())!
+    let lastDayOfWeek = Self.calendar.date(byAdding: .day, value: -dayDifference, to: self.lastDay.date(in: Self.timeZone))!
 
     return LocalDate(date: lastDayOfWeek)
   }
