@@ -97,15 +97,15 @@ final class LocalDateTests: XCTestCase {
   func testReturnsCorrectDateInJapan() {
     let localDate = LocalDate(string: "2021-01-01", formatter: japanDateFormatter)!
 
-    // TimeZone = "+00:00"
-    XCTAssertEqual(localDate.date().timeIntervalSince1970, 1_609_459_200)
+    // TimeZone = "+09:00"
+    XCTAssertEqual(localDate.date().timeIntervalSince1970, 1_609_426_800)
   }
 
   func testReturnsCorrectDateInUS() {
     let localDate = LocalDate(string: "2021-01-01", formatter: usDateFormatter)!
 
     // TimeZone = "+00:00"
-    XCTAssertEqual(localDate.date().timeIntervalSince1970, 1_609_459_200)
+    XCTAssertEqual(localDate.date(in: TimeZone(secondsFromGMT: 0)!).timeIntervalSince1970, 1_609_459_200)
   }
 
   func testFirstDayOfJanuary() {

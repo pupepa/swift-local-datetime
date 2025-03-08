@@ -32,7 +32,7 @@ final class LocalDateTimeTests: XCTestCase {
   func testInitLocalDateTimeWithDate() {
     // 2021-03-17 01:22:33+00:00
     let date = Date(timeIntervalSince1970: 1_615_944_153)
-    let localDateTime = LocalDateTime(date: date)
+    let localDateTime = LocalDateTime(date: date, timeZone: TimeZone(secondsFromGMT: 0)!)
 
     XCTAssertEqual(localDateTime.year, 2021)
     XCTAssertEqual(localDateTime.month, 3)
@@ -47,12 +47,12 @@ final class LocalDateTimeTests: XCTestCase {
     let localTime = LocalTime(hour: 7, minute: 55)!
     let localDateTime = LocalDateTime(localDate: localDate, localTime: localTime)
 
-    XCTAssertEqual(localDateTime.date().timeIntervalSince1970, 1_636_962_900)
+    XCTAssertEqual(localDateTime.date(timeZone: TimeZone(secondsFromGMT: 0)!).timeIntervalSince1970, 1_636_962_900)
   }
 
   func testEquatable() {
     // 2021-03-17 01:22:33+00:00
-    let date1 = LocalDateTime(date: Date(timeIntervalSince1970: 1_615_944_153))
+    let date1 = LocalDateTime(date: Date(timeIntervalSince1970: 1_615_944_153), timeZone: TimeZone(secondsFromGMT: 0)!)
     let date2 = LocalDateTime(year: 2021, month: 3, day: 17, hour: 1, minute: 22, second: 33)
 
     XCTAssertEqual(date1, date2)
